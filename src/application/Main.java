@@ -7,6 +7,7 @@ import org.jnativehook.GlobalScreen;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import utility.ErrorMessage;
 
 
 public class Main extends Application {
@@ -31,8 +32,11 @@ public class Main extends Application {
 				System.exit(0);
 			});
 			
-		} catch(Exception e) {
-			e.printStackTrace();
+		} catch(Exception exception) {
+			
+			// Show error message when an exception occurs and then close the program.
+			ErrorMessage errorMessage = new ErrorMessage(exception);
+			errorMessage.showThenClose();
 		}
 	}
 	
