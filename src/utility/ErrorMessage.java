@@ -15,7 +15,7 @@ public class ErrorMessage {
 		this.exception = exception;
 	}
 	
-	public void showAndWait(){
+	public void showThenClose(){
 		
 		// Create the stack trace as string.
 		StringWriter stringWriter = new StringWriter();
