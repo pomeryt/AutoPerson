@@ -13,13 +13,13 @@ import javafx.scene.layout.Priority;
 /**
  * It shows the stack trace of exception and then terminate the program.
  * @author Rin
- * @version 1.0
+ * @version 1.0.0
  */
 public class ErrorMessage {
 	/**
 	 * Exception should be passed through the constructor.
 	 * @param exception Exception
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public ErrorMessage(Exception exception){
 		this.exception = exception;
@@ -28,7 +28,7 @@ public class ErrorMessage {
 	/**
 	 * This method will show the error message. <br />
 	 * When an user close the pop-up, the program will be terminated.
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public void showThenClose(){
 		
