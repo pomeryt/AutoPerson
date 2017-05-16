@@ -10,11 +10,24 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
+/**
+ * It shows the stack trace of exception and then terminate the program.
+ * @author Rin
+ * @version 1.0
+ */
 public class ErrorMessage {
+	/**
+	 * Exception should be passed through the constructor.
+	 * @param exception Exception
+	 */
 	public ErrorMessage(Exception exception){
 		this.exception = exception;
 	}
 	
+	/**
+	 * This method will show the error message. <br />
+	 * When an user close the pop-up, the program will be terminated.
+	 */
 	public void showThenClose(){
 		
 		// Create the stack trace as string.
