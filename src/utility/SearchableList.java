@@ -101,7 +101,8 @@ public class SearchableList {
 	}
 	
 	/**
-	 * It will returns the selected item.
+	 * It will return the selected item.
+	 * If no item is selected, then it will return null.
 	 * @return A selected item
 	 * @since 1.0.0
 	 */
