@@ -8,19 +8,20 @@ import java.io.ObjectInputStream;
  * @author Rin
  * @version 1.0.0
  */
-public class Deserializer {
+public class ObjectLoader {
 	/**
 	 * It is better to check FileNotFoundException.
 	 * @param path of binary file
-	 * @return Deserialized object
+	 * @return object
 	 * @throws Exception
+	 * @since 1.0.0
 	 */
-	public Object deserialize(String path) throws Exception{
+	public Object load(String path) throws Exception{
 		// Stream
 		FileInputStream fis = new FileInputStream(path);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
-		// Deserialize an object
+		// Load an object
 		Object obj = ois.readObject();
 		
 		// Close stream
