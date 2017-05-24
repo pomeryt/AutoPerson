@@ -3,4 +3,4 @@
 .project
 build.fxbuild
 /script/*
-setting.bin
+/setting/*
