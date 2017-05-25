@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 
 /**
  * It shows the stack trace of exception and then terminate the program.
@@ -19,10 +20,12 @@ public class ErrorMessage {
 	/**
 	 * Exception should be passed through the constructor.
 	 * @param exception Exception
+	 * @param stage JavaFX stage
 	 * @since 1.0.0
 	 */
-	public ErrorMessage(Exception exception){
+	public ErrorMessage(Exception exception, Stage stage){
 		this.exception = exception;
+		this.stage = stage;
 	}
 	
 	/**
@@ -31,6 +34,8 @@ public class ErrorMessage {
 	 * @since 1.0.0
 	 */
 	public void showThenClose(){
+		// Turn off always on top property of the stage
+		stage.setAlwaysOnTop(false);
 		
 		// Create the stack trace as string.
 		StringWriter stringWriter = new StringWriter();
@@ -69,4 +74,5 @@ public class ErrorMessage {
 	}
 	
 	private final Exception exception;
+	private final Stage stage;
 }
