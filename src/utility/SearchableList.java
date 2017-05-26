@@ -34,7 +34,7 @@ public class SearchableList {
 		listView.getSelectionModel().selectedIndexProperty().addListener(e->{
 			if (listView.getSelectionModel().getSelectedIndex() != -1){
 				if (selectionEvent != null){
-					selectionEvent.execute();
+					selectionEvent.handle();
 				}
 			}
 		});
@@ -98,7 +98,7 @@ public class SearchableList {
 	 * @param selectionEvent An implementation of execution
 	 * @since 1.0.0
 	 */
-	public void onSelection(MyExecutor selectionEvent){
+	public void onSelection(PlainEvent selectionEvent){
 		this.selectionEvent = selectionEvent;
 	}
 	
@@ -131,7 +131,7 @@ public class SearchableList {
 		}
 	}
 	
-	private MyExecutor selectionEvent = null;
+	private PlainEvent selectionEvent = null;
 	
 	private final Set<String> set = new TreeSet<String>();
 	private final ListView<String> listView = new ListView<String>();
