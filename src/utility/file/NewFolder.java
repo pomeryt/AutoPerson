@@ -1,4 +1,4 @@
-package utility;
+package utility.file;
 
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
  * @author Rin
  * @version 1.0.0
  */
-public class FolderCreator {
+public class NewFolder {
 	/**
 	 * This method will try to create some folders. <br />
 	 * It will do nothing in the case where a folder already exists.

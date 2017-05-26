@@ -1,4 +1,4 @@
-package utility;
+package utility.file;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author Rin
  * @version 1.0.0
  */
-public class ObjectSaver {
+public class SavedObject {
 	/**
 	 * The path should include a file name with extension.
 	 * @param path to be saved

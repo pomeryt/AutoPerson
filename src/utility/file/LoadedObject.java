@@ -1,4 +1,4 @@
-package utility;
+package utility.file;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
  * @author Rin
  * @version 1.0.0
  */
-public class ObjectLoader {
+public class LoadedObject {
 	/**
 	 * It is better to check FileNotFoundException.
 	 * @param path of binary file

@@ -1,4 +1,4 @@
-package utility;
+package utility.event;
 
 /**
  * This functional interface will be used for an event listener without any parameters.

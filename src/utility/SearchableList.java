@@ -10,12 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import utility.event.PlainEvent;
 
 /**
  * This class shows a list of strings with searching feature. <br />
  * Duplicated item addition will be ignored. <br />
  * Items will be automatically sorted alphabetically. <br />
- * This class requires <b>MyExecutor.java</b> and <b>center.css</b> files from utility package.
+ * This class requires <b>PlainEvent.java</b> and <b>center.css</b> files from utility package.
  * @author Rin
  * @version 1.0.0
  */
