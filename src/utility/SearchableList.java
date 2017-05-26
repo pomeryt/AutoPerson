@@ -32,8 +32,10 @@ public class SearchableList {
 		listView.prefHeightProperty().bind(pane.heightProperty());
 		listView.getStylesheets().add("utility/center.css");
 		listView.getSelectionModel().selectedIndexProperty().addListener(e->{
-			if (selectionEvent != null){
-				selectionEvent.execute();
+			if (listView.getSelectionModel().getSelectedIndex() != -1){
+				if (selectionEvent != null){
+					selectionEvent.execute();
+				}
 			}
 		});
 		
