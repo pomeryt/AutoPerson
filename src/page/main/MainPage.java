@@ -117,7 +117,21 @@ public class MainPage extends Page {
 
 				// Initialize Key Prompt
 				KeyPrompt keyPrompt = new KeyPrompt(pane, saveEvent);
-
+				
+				// Show initial key
+				try {
+					BufferedReader reader = Files.newBufferedReader(Paths.get(scriptFolder+"/"+searchableList.selectedItem()+".txt"));
+					String firstLine = reader.readLine();
+					try {
+						keyPrompt.showText(KeyEvent.getKeyText(Integer.parseInt(firstLine)));
+					} catch (NumberFormatException numberFormatException){
+						
+					}
+				} catch (IOException ioException) {
+					ErrorMessage errorMessage = new ErrorMessage(ioException, stage);
+					errorMessage.showThenClose();
+				}
+				
 				keyPrompt.onKeyPressed(keyCode -> {
 					selectedKey[0] = keyCode;
 					keyPrompt.showText(KeyEvent.getKeyText(keyCode));
