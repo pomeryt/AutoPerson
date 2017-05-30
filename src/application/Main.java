@@ -1,5 +1,5 @@
 package application;
-	
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -16,53 +16,52 @@ import page.setting.SettingPage;
 import utility.ErrorMessage;
 import utility.file.NewFolder;
 
-
 public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			
-			// Set GlobalScreen to only show warnings and errors.
-			Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+
+			// Turn off logging feature of GlobalScreen
+			final Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
 			logger.setLevel(Level.WARNING);
 			logger.setUseParentHandlers(false);
-			
+
 			// GlobalScreen
 			GlobalScreen.registerNativeHook();
-			
+
 			// Required folder names
-			String scriptFolder = "script";
-			String settingFolder = "setting";
-			
+			final String scriptFolder = "script";
+			final String settingFolder = "setting";
+
 			// Create a folder for scripts if it does not exists.
-			NewFolder folderCreator = new NewFolder();
-			folderCreator.create(scriptFolder, settingFolder);
-			
-			// Setting Paths
-			Map<SettingKey, String> pathMap = new HashMap<SettingKey, String>();
-			pathMap.put(SettingKey.ALWAYS_ON_TOP_PATH, settingFolder+"/alwaysOnTop.bin");
-			pathMap.put(SettingKey.RECORD_KEY_PATH, settingFolder+"/recording.bin");
-			
+			final NewFolder newFolder = new NewFolder();
+			newFolder.create(scriptFolder, settingFolder);
+
+			// Collection of paths for settings
+			final Map<SettingKey, String> settingPaths = new HashMap<SettingKey, String>();
+			settingPaths.put(SettingKey.ALWAYS_ON_TOP_PATH, settingFolder + "/alwaysOnTop.bin");
+			settingPaths.put(SettingKey.RECORD_KEY_PATH, settingFolder + "/recording.bin");
+
 			// Initialize pages
 			mainPage = new MainPage(scriptFolder, stage);
-			settingPage = new SettingPage(pathMap, stage);
+			settingPage = new SettingPage(settingPaths, stage);
 			editPage = new EditPage(stage);
-			
+
 			// MainPage
 			mainPage.activateNewButton(editPage, settingPage.settings());
 			mainPage.linkToEditPage(editPage, settingPage.settings());
 			mainPage.linkToSettingPage(settingPage);
-			
+
 			// SettingPage
 			settingPage.linkToMainPage(mainPage);
-			
+
 			// Stage
 			stage.setScene(mainPage.body());
 			stage.setTitle("AutoPerson");
 			stage.setWidth(325);
 			stage.setHeight(350);
 			stage.show();
-			stage.setOnCloseRequest(windowEvent->{
+			stage.setOnCloseRequest(windowEvent -> {
 				// Save settings
 				try {
 					settingPage.save();
@@ -70,23 +69,23 @@ public class Main extends Application {
 					ErrorMessage errorMessage = new ErrorMessage(exception, stage);
 					errorMessage.showThenClose();
 				}
-				
+
 				// Terminate Java Virtual Machine
 				System.exit(0);
 			});
-			
-		} catch(Exception exception) {
-			exception.printStackTrace();
-			// Show error message when an exception occurs and then close the program.
-			//ErrorMessage errorMessage = new ErrorMessage(exception);
-			//errorMessage.showThenClose();
+
+		} catch (Exception exception) {
+			// Show error message when an exception occurs and then close the
+			// program.
+			ErrorMessage errorMessage = new ErrorMessage(exception, stage);
+			errorMessage.showThenClose();
 		}
 	}
-	
+
 	private MainPage mainPage;
 	private SettingPage settingPage;
 	private EditPage editPage;
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
