@@ -9,6 +9,7 @@ public interface IntegerEvent {
 	/**
 	 * Execute something for an event where an integer parameter is required.
 	 * @param integer
+	 * @since 1.0.0
 	 */
 	public void handle(int integer);
 }

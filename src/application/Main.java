@@ -21,7 +21,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			
 			// Set GlobalScreen to only show warnings and errors.
 			Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
 			logger.setLevel(Level.WARNING);
