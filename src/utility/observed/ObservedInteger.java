@@ -1,5 +1,6 @@
 package utility.observed;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import utility.event.IntegerEvent;
  * @author Rin
  * @version 1.0.0
  */
-public class ObservedInteger {
+public class ObservedInteger implements Serializable {
 	/**
 	 * Store initial integer which can be changed later.
 	 * @param value an integer
@@ -55,6 +56,8 @@ public class ObservedInteger {
 	public void onValueChanged(IntegerEvent event){
 		events.add(event);
 	}
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int value;
 	

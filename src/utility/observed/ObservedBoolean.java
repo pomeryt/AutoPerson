@@ -1,5 +1,6 @@
 package utility.observed;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import utility.event.BooleanEvent;
  * @author Rin
  * @version 1.0.0
  */
-public class ObservedBoolean {
+public class ObservedBoolean implements Serializable {
 	/**
 	 * Store initial boolean value which can be changed later.
 	 * @param value boolean
@@ -55,6 +56,8 @@ public class ObservedBoolean {
 	public void onValueChanged(BooleanEvent event){
 		events.add(event);
 	}
+	
+	private static final long serialVersionUID = 1L;
 	
 	private boolean value;
 	
