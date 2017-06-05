@@ -18,9 +18,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-
-			// Turn off logging feature of GlobalScreen
-			final Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+			// Set GlobalScreen to only show warnings and errors.
+			Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
 			logger.setLevel(Level.WARNING);
 			logger.setUseParentHandlers(false);
 
