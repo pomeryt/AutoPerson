@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.jnativehook.GlobalScreen;
 
@@ -27,25 +26,15 @@ import javafx.stage.Stage;
 import page.Page;
 import page.common.KeyPrompt;
 import page.edit.EditPage;
-import page.setting.SettingKey;
 import page.setting.SettingPage;
 import utility.ErrorMessage;
 import utility.SearchableList;
 import utility.event.PlainEvent;
+import utility.primitive.MyInteger;
 
 public class MainPage extends Page {
 
-	public MainPage(String scriptFolder, Stage stage) throws IOException {
-		// Initialize variables with arguments
-		this.scriptFolder = scriptFolder;
-		this.stage = stage;
-
-		// Initialize Macro
-		macro = new Macro(scriptFolder, stage, lReady);
-
-		// Initialize container
-		GridPane gridButton = new GridPane();
-
+	public MainPage(String scriptFolder, Stage stage) {
 		// Label for running status
 		lReady.setAlignment(Pos.CENTER);
 		lReady.setPrefWidth(Integer.MAX_VALUE);
@@ -59,88 +48,89 @@ public class MainPage extends Page {
 		// SearchableList
 		searchableList = new SearchableList(pane);
 		searchableList.onSelection(() -> {
-			showKeyText();
-		});
-
-		// Key Button
-		bKey.setOnAction(actionEvent -> {
-			// Making sure an item is selected
-			if (searchableList.selectedItem() != null) {
-				// Remove macro for a bit
-				GlobalScreen.removeNativeKeyListener(macro);
-
-				// Container for currently selected key
-				Integer[] selectedKey = new Integer[1];
-
-				// Event when save button of KeyPrompt is pressed
-				PlainEvent saveEvent = new PlainEvent() {
-					@Override
-					public void handle() {
-						if (selectedKey[0] != null) {
-							try {
-								// Currently selected path
-								Path currentPath = Paths.get(scriptFolder + "/" + searchableList.selectedItem() + ".txt");
-								
-								// Copy everything in the file.
-								List<String> copy = new ArrayList<String>();
-								BufferedReader reader = Files.newBufferedReader(currentPath);
-								String line = reader.readLine();
-								while (line != null) {
-									copy.add(line);
-									line = reader.readLine();
-								}
-								reader.close();
-	
-								// Write selected key and the rest of copy
-								BufferedWriter writer = Files.newBufferedWriter(currentPath);
-								writer.write(Integer.toString(selectedKey[0]) + "\n");
-								for (int x = 1; x < copy.size(); x++) {
-									writer.write(copy.get(x) + "\n");
-								}
-								writer.close();
-								
-								// Refresh key data
-								macro.refreshKeyData();
-								
-								// Refresh key text
-								showKeyText();
-							} catch (Exception exception){
-								ErrorMessage errorMessage = new ErrorMessage(exception, stage);
-								errorMessage.showThenClose();
-							}
-						}
-
-						// Add macro back
-						GlobalScreen.addNativeKeyListener(macro);
-					}
-				};
-
-				// Initialize Key Prompt
-				KeyPrompt keyPrompt = new KeyPrompt(pane, saveEvent);
-				
-				// Show initial key
-				try {
-					BufferedReader reader = Files.newBufferedReader(Paths.get(scriptFolder+"/"+searchableList.selectedItem()+".txt"));
-					String firstLine = reader.readLine();
-					try {
-						keyPrompt.showText(KeyEvent.getKeyText(Integer.parseInt(firstLine)));
-					} catch (NumberFormatException numberFormatException){
-						
-					}
-				} catch (IOException ioException) {
-					ErrorMessage errorMessage = new ErrorMessage(ioException, stage);
-					errorMessage.showThenClose();
-				}
-				
-				keyPrompt.onKeyPressed(keyCode -> {
-					selectedKey[0] = keyCode;
-					keyPrompt.showText(KeyEvent.getKeyText(keyCode));
-				});
-			}
+			showKeyText(scriptFolder, stage);
 		});
 
 		// Remove Button
 		bRemove.setStyle("-fx-text-fill: red;");
+
+		// Refresh Button
+		bRefresh.setOnAction(actionEvent -> {
+			refreshList(scriptFolder, stage);
+		});
+
+		// Button array
+		Button[] buttons = { bNew, bEdit, bKey, bSetting, bRefresh, bRemove };
+		for (Button button : buttons) {
+			button.setMinWidth(75);
+		}
+
+		// StackPane for aligning the remove button on bottom-left
+		StackPane paneRemoveButton = new StackPane();
+		paneRemoveButton.getChildren().add(bRemove);
+		paneRemoveButton.setAlignment(Pos.BOTTOM_CENTER);
+		paneRemoveButton.setPrefHeight(Integer.MAX_VALUE);
+
+		// GridPane for the buttons
+		GridPane gridButton = new GridPane();
+		gridButton.addColumn(0, bNew, bEdit, bKey, bSetting, bRefresh, paneRemoveButton);
+
+		// GridPane for joining buttons and SearchableList.
+		GridPane gridButtonAndList = new GridPane();
+		gridButtonAndList.addRow(0, gridButton, searchableList.body());
+
+		// GridPane for joining gridButtonAndList and status label.
+		GridPane gridStat = new GridPane();
+		gridStat.addColumn(0, lReady, lKey, gridButtonAndList);
+		gridStat.setPadding(new Insets(10, 10, 10, 10));
+
+		// StackPane
+		pane.getChildren().add(gridStat);
+
+		// Scene
+		scene = new Scene(pane);
+
+	}
+	
+	public void activateMacro(Stage stage, String scriptFolder) throws IOException{
+		Macro macro = new Macro(scriptFolder, stage, lReady);
+		
+		stage.sceneProperty().addListener(e -> {
+			if (stage.getScene().equals(scene)) {
+				GlobalScreen.addNativeKeyListener(macro);
+			} else {
+				GlobalScreen.removeNativeKeyListener(macro);
+			}
+		});
+	}
+
+	public void linkToSettingPage(Stage stage, SettingPage settingPage) {
+		bSetting.setOnAction(actionEvent -> {
+			stage.setScene(settingPage.body());
+		});
+	}
+
+	public void linkToEditPage(Stage stage, EditPage editPage, MyInteger recordKey, String scriptFolder) {
+		bEdit.setOnAction(actionEvent -> {
+			String fileName = searchableList.selectedItem();
+
+			if (searchableList.selectedItem() != null) {
+				try {
+					Path path = Paths.get(scriptFolder+"/"+fileName+".txt");
+					editPage.showFileName(fileName);
+					editPage.showScript(path);
+					editPage.addNativeListeners(recordKey);
+					editPage.linkToMainPage(stage, this, path);
+				} catch (Exception exception) {
+					ErrorMessage errorMessage = new ErrorMessage(exception, stage);
+					errorMessage.showThenClose();
+				}
+				stage.setScene(editPage.body());
+			}
+		});
+	}
+	
+	public void activateRemoveButton(String scriptFolder, Stage stage){
 		bRemove.setOnAction(actionEvent -> {
 			// Selected Item
 			String selectedItem = searchableList.selectedItem();
@@ -159,81 +149,93 @@ public class MainPage extends Page {
 				}
 
 				// refresh list
-				refreshList();
-			}
-		});
-
-		// Refresh Button
-		bRefresh.setOnAction(actionEvent -> {
-			refreshList();
-		});
-
-		// Button array
-		Button[] buttons = { bNew, bEdit, bKey, bSetting, bRefresh, bRemove };
-		for (Button button : buttons) {
-			button.setMinWidth(75);
-		}
-
-		// StackPane for aligning the remove button on bottom-left
-		StackPane paneRemoveButton = new StackPane();
-		paneRemoveButton.getChildren().add(bRemove);
-		paneRemoveButton.setAlignment(Pos.BOTTOM_CENTER);
-		paneRemoveButton.prefHeightProperty().bind(gridButton.heightProperty());
-
-		// GridPane for the buttons
-		gridButton.addColumn(0, bNew, bEdit, bKey, bSetting, bRefresh, paneRemoveButton);
-
-		// GridPane for joining buttons and SearchableList.
-		GridPane gridButtonAndList = new GridPane();
-		gridButtonAndList.addRow(0, gridButton, searchableList.body());
-
-		// GridPane for joining gridButtonAndList and status label.
-		GridPane gridStat = new GridPane();
-		gridStat.addColumn(0, lReady, lKey, gridButtonAndList);
-		gridStat.setPadding(new Insets(10, 10, 10, 10));
-
-		// StackPane
-		pane.getChildren().add(gridStat);
-
-		// Scene
-		scene = new Scene(pane);
-
-		// Calling private methods to complete building this object
-		refreshList();
-
-		// Turn on and off macro respect to scene changes
-		stage.sceneProperty().addListener(e -> {
-			if (stage.getScene().equals(scene)) {
-				GlobalScreen.addNativeKeyListener(macro);
-			} else {
-				GlobalScreen.removeNativeKeyListener(macro);
+				refreshList(scriptFolder, stage);
 			}
 		});
 	}
 
-	public void linkToSettingPage(SettingPage settingPage) {
-		bSetting.setOnAction(actionEvent -> {
-			stage.setScene(settingPage.body());
-		});
-	}
-
-	public void linkToEditPage(EditPage editPage, Map<SettingKey, Object> settingData) {
-		bEdit.setOnAction(actionEvent -> {
-			String fileName = searchableList.selectedItem();
-
+	public void activateKeyButton(String scriptFolder, Stage stage) {
+		// Key Button
+		bKey.setOnAction(actionEvent -> {
+			// Making sure an item is selected
 			if (searchableList.selectedItem() != null) {
+				// Remove macro for a bit
+				GlobalScreen.removeNativeKeyListener(macro);
+
+				// Container for currently selected key
+				Integer[] selectedKey = new Integer[1];
+
+				// Event when save button of KeyPrompt is pressed
+				PlainEvent saveEvent = new PlainEvent() {
+					@Override
+					public void handle() {
+						if (selectedKey[0] != null) {
+							try {
+								// Currently selected path
+								Path currentPath = Paths
+										.get(scriptFolder + "/" + searchableList.selectedItem() + ".txt");
+
+								// Copy everything in the file.
+								List<String> copy = new ArrayList<String>();
+								BufferedReader reader = Files.newBufferedReader(currentPath);
+								String line = reader.readLine();
+								while (line != null) {
+									copy.add(line);
+									line = reader.readLine();
+								}
+								reader.close();
+
+								// Write selected key and the rest of copy
+								BufferedWriter writer = Files.newBufferedWriter(currentPath);
+								writer.write(Integer.toString(selectedKey[0]) + "\n");
+								for (int x = 1; x < copy.size(); x++) {
+									writer.write(copy.get(x) + "\n");
+								}
+								writer.close();
+
+								// Refresh key data
+								macro.refreshKeyData();
+
+								// Refresh key text
+								showKeyText(scriptFolder, stage);
+							} catch (Exception exception) {
+								ErrorMessage errorMessage = new ErrorMessage(exception, stage);
+								errorMessage.showThenClose();
+							}
+						}
+
+						// Add macro back
+						GlobalScreen.addNativeKeyListener(macro);
+					}
+				};
+
+				// Initialize Key Prompt
+				KeyPrompt keyPrompt = new KeyPrompt(pane, saveEvent);
+
+				// Show initial key
 				try {
-					editPage.activatePage(fileName, scriptFolder, settingData, this);
-				} catch (Exception exception) {
-					ErrorMessage errorMessage = new ErrorMessage(exception, stage);
+					BufferedReader reader = Files
+							.newBufferedReader(Paths.get(scriptFolder + "/" + searchableList.selectedItem() + ".txt"));
+					String firstLine = reader.readLine();
+					try {
+						keyPrompt.showText(KeyEvent.getKeyText(Integer.parseInt(firstLine)));
+					} catch (NumberFormatException numberFormatException) {
+
+					}
+				} catch (IOException ioException) {
+					ErrorMessage errorMessage = new ErrorMessage(ioException, stage);
 					errorMessage.showThenClose();
 				}
-				stage.setScene(editPage.body());
+
+				keyPrompt.onKeyPressed(keyCode -> {
+					selectedKey[0] = keyCode;
+					keyPrompt.showText(KeyEvent.getKeyText(keyCode));
+				});
 			}
 		});
 	}
 
-	public void activateNewButton(EditPage editPage, Map<SettingKey, Object> settingData) {
+	public void activateNewButton(String scriptFolder, Stage stage, EditPage editPage, MyInteger recordKey) {
 		bNew.setOnAction(actionEvent -> {
 			// Remove macro for a bit
 			GlobalScreen.removeNativeKeyListener(macro);
@@ -299,14 +301,18 @@ public class MainPage extends Page {
 					}
 
 					// Refresh list
-					refreshList();
+					refreshList(scriptFolder, stage);
 
 					// Remove the prompt
 					pane.getChildren().remove(paneNew);
 
 					// Go to edit page
 					try {
-						editPage.activatePage(fileName, scriptFolder, settingData, this);
+						Path path = Paths.get(scriptFolder+"/"+fileName+".txt");
+						editPage.showFileName(fileName);
+						editPage.showScript(path);
+						editPage.addNativeListeners(recordKey);
+						editPage.linkToMainPage(stage, this, path);
 					} catch (Exception exception) {
 						ErrorMessage errorMessage = new ErrorMessage(exception, stage);
 						errorMessage.showThenClose();
@@ -343,7 +349,7 @@ public class MainPage extends Page {
 		return scene;
 	}
 
-	private void refreshList() {
+	private void refreshList(String scriptFolder, Stage stage) {
 		// Clear SearchableList
 		searchableList.clear();
 
@@ -365,7 +371,7 @@ public class MainPage extends Page {
 
 		// Clear text for showing key
 		lKey.setText("");
-		
+
 		// Refresh key data
 		try {
 			macro.refreshKeyData();
@@ -374,8 +380,8 @@ public class MainPage extends Page {
 			errorMessage.showThenClose();
 		}
 	}
-	
-	private void showKeyText(){
+
+	private void showKeyText(String scriptFolder, Stage stage) {
 		String fileName = searchableList.selectedItem();
 		Path filePath = Paths.get(scriptFolder + "/" + fileName + ".txt");
 
@@ -402,13 +408,11 @@ public class MainPage extends Page {
 			}
 		}
 	}
-
-	private final String scriptFolder;
-
-	private final Macro macro;
+	
+	private Macro macro;
 
 	private final SearchableList searchableList;
-	
+
 	private final Label lReady = new Label("Ready");
 	private final Label lKey = new Label();
 	private final Button bNew = new Button("New");
@@ -419,5 +423,4 @@ public class MainPage extends Page {
 	private final Button bRemove = new Button("Remove");
 	private final StackPane pane = new StackPane();
 	private final Scene scene;
-	private final Stage stage;
 }

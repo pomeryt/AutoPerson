@@ -1,7 +1,5 @@
 package application;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,8 +9,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import page.edit.EditPage;
 import page.main.MainPage;
-import page.setting.SettingKey;
 import page.setting.SettingPage;
+import page.setting.Settings;
 import utility.ErrorMessage;
 import utility.file.NewFolder;
 
@@ -36,24 +34,27 @@ public class Main extends Application {
 			// Create a folder for scripts if it does not exists.
 			final NewFolder newFolder = new NewFolder();
 			newFolder.create(scriptFolder, settingFolder);
-
-			// Collection of paths for settings
-			final Map<SettingKey, String> settingPaths = new HashMap<SettingKey, String>();
-			settingPaths.put(SettingKey.ALWAYS_ON_TOP_PATH, settingFolder + "/alwaysOnTop.bin");
-			settingPaths.put(SettingKey.RECORD_KEY_PATH, settingFolder + "/recording.bin");
-
+			
+			// Settings
+			final Settings settings = new Settings(settingFolder);
+			
 			// Initialize pages
 			mainPage = new MainPage(scriptFolder, stage);
-			settingPage = new SettingPage(settingPaths, stage);
-			editPage = new EditPage(stage);
+			settingPage = new SettingPage();
+			editPage = new EditPage();
 
 			// MainPage
-			mainPage.activateNewButton(editPage, settingPage.settings());
-			mainPage.linkToEditPage(editPage, settingPage.settings());
-			mainPage.linkToSettingPage(settingPage);
+			mainPage.activateNewButton(scriptFolder, stage, editPage, settings.recordKey());
+			mainPage.activateRemoveButton(scriptFolder, stage);
+			mainPage.activateKeyButton(scriptFolder, stage);
+			mainPage.activateMacro(stage, scriptFolder);
+			mainPage.linkToEditPage(stage, editPage, settings.recordKey(), scriptFolder);
+			mainPage.linkToSettingPage(stage, settingPage);
 
 			// SettingPage
-			settingPage.linkToMainPage(mainPage);
+			settingPage.activateAlwaysOnTop(settings.alwaysOnTop(), stage);
+			settingPage.activateRecordKey(settings.recordKey());
+			settingPage.linkToMainPage(stage, mainPage);
 
 			// Stage
 			stage.setScene(mainPage.body());
@@ -63,12 +64,7 @@ public class Main extends Application {
 			stage.show();
 			stage.setOnCloseRequest(windowEvent -> {
 				// Save settings
-				try {
-					settingPage.save();
-				} catch (Exception exception) {
-					ErrorMessage errorMessage = new ErrorMessage(exception, stage);
-					errorMessage.showThenClose();
-				}
+				settings.save(stage);
 
 				// Terminate Java Virtual Machine
 				System.exit(0);

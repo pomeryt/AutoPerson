@@ -13,10 +13,11 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import page.common.CorrectKey;
+import utility.primitive.MyInteger;
 
 public class Script implements NativeKeyListener, NativeMouseListener, NativeMouseWheelListener {
 
-	public Script(int recordKey, Label lReady, TextArea taScript) {
+	public Script(MyInteger recordKey, Label lReady, TextArea taScript) {
 		this.recordKey = recordKey;
 		this.lReady = lReady;
 		this.taScript = taScript;
@@ -31,7 +32,7 @@ public class Script implements NativeKeyListener, NativeMouseListener, NativeMou
 		int keyCode = correctKey.convert(key.getKeyCode(), key.getRawCode());
 
 		// Turn on and off recording
-		if (recordKey == keyCode) {
+		if (recordKey.value() == keyCode) {
 			if (started == false) {
 				started = true;
 				Platform.runLater(() -> {
@@ -49,7 +50,7 @@ public class Script implements NativeKeyListener, NativeMouseListener, NativeMou
 
 		// Recording implementation
 		if (started) {
-			if (recordKey != keyCode) {
+			if (recordKey.value() != keyCode) {
 				String command = "kp(" + Integer.toString(keyCode) + "): " + KeyEvent.getKeyText(keyCode);
 
 				showCommand(command);
@@ -68,7 +69,7 @@ public class Script implements NativeKeyListener, NativeMouseListener, NativeMou
 
 		// Recording implementation
 		if (started) {
-			if (recordKey != keyCode) {
+			if (recordKey.value() != keyCode) {
 				String command = "kr(" + Integer.toString(keyCode) + "): " + KeyEvent.getKeyText(keyCode);
 
 				showCommand(command);
@@ -135,7 +136,7 @@ public class Script implements NativeKeyListener, NativeMouseListener, NativeMou
 
 	private boolean started = false;
 
-	private final int recordKey;
+	private final MyInteger recordKey;
 
 	private final Label lReady;
 	private final TextArea taScript;
