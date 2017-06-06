@@ -18,7 +18,8 @@ import javafx.stage.Stage;
  */
 public class ErrorMessage {
 	/**
-	 * Exception should be passed through the constructor.
+	 * Exception should be passed through the constructor. <br />
+	 * Stage should be provided in order to turn off always on top feature before showing the error message.
 	 * @param exception Exception
 	 * @param stage JavaFX stage
 	 * @since 1.0.0
@@ -37,18 +38,18 @@ public class ErrorMessage {
 		// Turn off always on top property of the stage
 		stage.setAlwaysOnTop(false);
 		
-		// Create the stack trace as string.
-		StringWriter stringWriter = new StringWriter();
-		PrintWriter printWriter = new PrintWriter(stringWriter);
+		// Create a stack trace as string.
+		final StringWriter stringWriter = new StringWriter();
+		final PrintWriter printWriter = new PrintWriter(stringWriter);
 		exception.printStackTrace(printWriter);
-		String stackTrace = stringWriter.toString();
+		final String stackTrace = stringWriter.toString();
 		
 		// Label
-		Label lException = new Label();
+		final Label lException = new Label();
 		lException.setText("Full Error Message:");
 		
 		// TextArea
-		TextArea taException = new TextArea();
+		final TextArea taException = new TextArea();
 		taException.setText(stackTrace);
 		taException.setEditable(false);
 		taException.setWrapText(true);
@@ -56,13 +57,13 @@ public class ErrorMessage {
 		taException.setMaxHeight(Double.MAX_VALUE);
 		
 		// GridPane
-		GridPane gridException = new GridPane();
+		final GridPane gridException = new GridPane();
 		gridException.addColumn(0, lException, taException);
 		GridPane.setVgrow(taException, Priority.ALWAYS);
 		GridPane.setHgrow(taException, Priority.ALWAYS);
 		
 		// Alert object
-		Alert alert = new Alert(AlertType.ERROR);
+		final Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error Message");
 		alert.setHeaderText("You have found a bug.");
 		alert.setContentText("Please report this bug with the details below.");

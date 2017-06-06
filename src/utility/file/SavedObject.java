@@ -19,8 +19,8 @@ public class SavedObject {
 	 */
 	public void save(String path, Serializable object) throws Exception{
 		// Stream
-		FileOutputStream fos = new FileOutputStream(path);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		final FileOutputStream fos = new FileOutputStream(path);
+		final ObjectOutputStream oos = new ObjectOutputStream(fos);
 		
 		// Save an object
 		oos.writeObject(object);

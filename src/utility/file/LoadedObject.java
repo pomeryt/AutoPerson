@@ -19,11 +19,11 @@ public class LoadedObject {
 	 */
 	public Object load(String path) throws Exception{
 		// Stream
-		FileInputStream fis = new FileInputStream(path);
-		ObjectInputStream ois = new ObjectInputStream(fis);
+		final FileInputStream fis = new FileInputStream(path);
+		final ObjectInputStream ois = new ObjectInputStream(fis);
 		
 		// Load an object
-		Object obj = ois.readObject();
+		final Object obj = ois.readObject();
 		
 		// Close stream
 		ois.close();
@@ -47,8 +47,8 @@ public class LoadedObject {
 		
 		// Stream
 		try {
-			FileInputStream fis = new FileInputStream(path);
-			ObjectInputStream ois = new ObjectInputStream(fis);
+			final FileInputStream fis = new FileInputStream(path);
+			final ObjectInputStream ois = new ObjectInputStream(fis);
 					
 			// Load an object
 			obj = ois.readObject();
@@ -56,6 +56,7 @@ public class LoadedObject {
 			// Close stream
 			ois.close();
 		} catch (FileNotFoundException fileNotFoundException){
+			// Assign default object when the file is not found.
 			obj = defaultValue;
 		}
 		

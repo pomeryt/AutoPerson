@@ -1,5 +1,7 @@
 package utility;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -10,13 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import utility.event.PlainEvent;
+import utility.event.StringEvent;
 
 /**
  * This class shows a list of strings with searching feature. <br />
  * Duplicated item addition will be ignored. <br />
  * Items will be automatically sorted alphabetically. <br />
- * This class requires <b>PlainEvent.java</b> and <b>center.css</b> files from utility package.
+ * This class requires <b>StringEvent.java</b> and <b>center.css</b> files from utility package.
  * @author Rin
  * @version 1.0.0
  */
@@ -34,8 +36,8 @@ public class SearchableList {
 		listView.getStylesheets().add("utility/center.css");
 		listView.getSelectionModel().selectedIndexProperty().addListener(e->{
 			if (listView.getSelectionModel().getSelectedIndex() != -1){
-				if (selectionEvent != null){
-					selectionEvent.handle();
+				for (StringEvent selectionEvent : selectionEvents){
+					selectionEvent.handle(listView.getSelectionModel().getSelectedItem());
 				}
 			}
 		});
@@ -46,7 +48,7 @@ public class SearchableList {
 		});
 
 		// GridPane
-		GridPane grid = new GridPane();
+		final GridPane grid = new GridPane();
 		grid.addColumn(0, tfSearch, listView);
 
 		// StackPane
@@ -99,8 +101,8 @@ public class SearchableList {
 	 * @param selectionEvent An implementation of execution
 	 * @since 1.0.0
 	 */
-	public void onSelection(PlainEvent selectionEvent){
-		this.selectionEvent = selectionEvent;
+	public void addSelectionEvent(StringEvent selectionEvent){
+		selectionEvents.add(selectionEvent);
 	}
 	
 	/**
@@ -119,7 +121,7 @@ public class SearchableList {
 	 */
 	private void updateList(){
 		// Get text from the search bar
-		String text = tfSearch.getText();
+		final String text = tfSearch.getText();
 		
 		// Clears the list
 		obsList.clear();
@@ -132,8 +134,7 @@ public class SearchableList {
 		}
 	}
 	
-	private PlainEvent selectionEvent = null;
-	
+	private final List<StringEvent> selectionEvents = new ArrayList<StringEvent>();
 	private final Set<String> set = new TreeSet<String>();
 	private final ListView<String> listView = new ListView<String>();
 	private final ObservableList<String> obsList = FXCollections.observableArrayList();

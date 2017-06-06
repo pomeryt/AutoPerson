@@ -21,7 +21,9 @@ public class NewFolder {
 		for (String folderName : folderNames){
 			try {
 				Files.createDirectories(Paths.get(folderName));
-			} catch (FileAlreadyExistsException fileAlreadyExistsException) {}
+			} catch (FileAlreadyExistsException fileAlreadyExistsException) {
+				// Do nothing when the folder already exists.
+			}
 		}
 	}
 }

@@ -42,9 +42,7 @@ public class ObservedBoolean implements Serializable {
 		this.value = value;
 		
 		// Handle all events
-		for (BooleanEvent event : events){
-			event.handle(value);
-		}
+		handleEvents();
 	}
 	
 	/**
@@ -55,6 +53,33 @@ public class ObservedBoolean implements Serializable {
 	 */
 	public void onValueChanged(BooleanEvent event){
 		events.add(event);
+	}
+	
+	/**
+	 * Switch boolean value.
+	 * @since 1.0.0
+	 */
+	public void switchValue(){
+		// Switch value
+		if (value){
+			value = false;
+		} else {
+			value = true;
+		}
+		
+		// Handle all events
+		handleEvents();
+	}
+	
+	/**
+	 * Execute all events. <br />
+	 * This method should be called when the boolean value is changed.
+	 * @since 1.0.0
+	 */
+	private void handleEvents(){
+		for (BooleanEvent event : events){
+			event.handle(value);
+		}
 	}
 	
 	private static final long serialVersionUID = 1L;
