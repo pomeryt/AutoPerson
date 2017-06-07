@@ -93,6 +93,15 @@ public class SettingPage {
 	}
 	
 	/**
+	 * Show keyboard key.
+	 * @param keyText keyboard key
+	 * @since 1.0.0
+	 */
+	public void showRecordKey(String keyText){
+		bRecord.setText(keyText);
+	}
+	
+	/**
 	 * Return CheckBox for Always On Top feature.
 	 * @return check box for Always On Top feature.
 	 * @since 1.0.0
