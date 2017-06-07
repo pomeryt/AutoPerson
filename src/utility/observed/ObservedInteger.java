@@ -1,18 +1,18 @@
 package utility.observed;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import utility.event.IntegerEvent;
 
 /**
  * This class observes its integer value. <br />
+ * It must inherit <b>ObservedType</b> in utility package. <br />
+ * When event list is needed, it must use the event list from its parent class for deserialization. <br />
  * It requires <b>IntegerEvent</b> class in utility package.
  * @author Rin
  * @version 1.0.0
  */
-public class ObservedInteger implements Serializable {
+public class ObservedInteger extends ObservedType implements Serializable {
 	/**
 	 * Store initial integer which can be changed later.
 	 * @param value an integer
@@ -42,7 +42,7 @@ public class ObservedInteger implements Serializable {
 		this.value = value;
 		
 		// Handle all events
-		for (IntegerEvent event : events){
+		for (IntegerEvent event : super.integerEvents){
 			event.handle(value);
 		}
 	}
@@ -54,12 +54,10 @@ public class ObservedInteger implements Serializable {
 	 * @since 1.0.0
 	 */
 	public void onValueChanged(IntegerEvent event){
-		events.add(event);
+		super.integerEvents.add(event);
 	}
 	
 	private static final long serialVersionUID = 1L;
 	
 	private int value;
-	
-	private final List<IntegerEvent> events = new ArrayList<IntegerEvent>();
 }

@@ -1,18 +1,18 @@
 package utility.observed;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import utility.event.BooleanEvent;
 
 /**
  * This class observes its boolean value. <br />
+ * It must inherit <b>ObservedType</b> in utility package. <br />
+ * When event list is needed, it must use the event list from its parent class for deserialization. <br />
  * It requires <b>BooleanEvent</b> class in utility package.
  * @author Rin
  * @version 1.0.0
  */
-public class ObservedBoolean implements Serializable {
+public class ObservedBoolean extends ObservedType implements Serializable {
 	/**
 	 * Store initial boolean value which can be changed later.
 	 * @param value boolean
@@ -52,7 +52,7 @@ public class ObservedBoolean implements Serializable {
 	 * @since 1.0.0
 	 */
 	public void onValueChanged(BooleanEvent event){
-		events.add(event);
+		super.booleanEvents.add(event);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class ObservedBoolean implements Serializable {
 	 * @since 1.0.0
 	 */
 	private void handleEvents(){
-		for (BooleanEvent event : events){
+		for (BooleanEvent event : super.booleanEvents){
 			event.handle(value);
 		}
 	}
@@ -85,6 +85,4 @@ public class ObservedBoolean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private boolean value;
-	
-	private final List<BooleanEvent> events = new ArrayList<BooleanEvent>();
 }
