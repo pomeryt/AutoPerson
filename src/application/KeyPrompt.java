@@ -103,6 +103,15 @@ public class KeyPrompt implements NativeKeyListener {
 	}
 	
 	/**
+	 * Show text on the prompt.
+	 * @param text
+	 * @since 1.0.0
+	 */
+	public void showText(String text){
+		lText.setText(text);
+	}
+	
+	/**
 	 * Show pressed keyboard key and assign its AWT key code.
 	 * @param key native key event
 	 * @since 1.0.0
