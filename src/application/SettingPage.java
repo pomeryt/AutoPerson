@@ -93,6 +93,15 @@ public class SettingPage {
 	}
 	
 	/**
+	 * Return CheckBox for Always On Top feature.
+	 * @return check box for Always On Top feature.
+	 * @since 1.0.0
+	 */
+	public CheckBox alwaysOnTop(){
+		return cbAlwaysOnTop;
+	}
+	
+	/**
 	 * This method must be called in order to use this object. <br />
 	 * Simply, set scene of a stage to this body.
 	 * @return Scene
