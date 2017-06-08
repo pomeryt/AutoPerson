@@ -18,7 +18,7 @@ import utility.event.PlainEvent;
 /**
  * Layout of the main page. <br />
  * <b>SearchableList</b> and <b>PlainEvent</b> from utility package are required.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class MainPage {

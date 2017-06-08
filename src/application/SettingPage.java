@@ -17,7 +17,7 @@ import utility.event.PlainEvent;
 /**
  * Layout of the setting page. <br />
  * <b>PlainEvent</b> from utility package is required.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class SettingPage {

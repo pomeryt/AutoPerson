@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * This class is used to save an object as a binary file.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class SavedObject {

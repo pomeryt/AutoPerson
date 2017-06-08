@@ -9,7 +9,7 @@ import utility.event.BooleanEvent;
  * It must inherit <b>ObservedType</b> in utility package. <br />
  * When event list is needed, it must use the event list from its parent class for deserialization. <br />
  * It requires <b>BooleanEvent</b> class in utility package.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class ObservedBoolean extends ObservedType implements Serializable {

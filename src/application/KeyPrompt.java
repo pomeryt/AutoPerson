@@ -21,7 +21,7 @@ import utility.event.IntegerEvent;
 /**
  * Prompt for key setting. <br />
  * <b>IntegerEvent</b>, <b>CorrectKey</b>, and <b>JNativeHook</b> are required.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class KeyPrompt implements NativeKeyListener {

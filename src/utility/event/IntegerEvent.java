@@ -2,7 +2,7 @@ package utility.event;
 
 /**
  * This functional interface will be used for an event listener with an integer parameter.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public interface IntegerEvent {

@@ -8,7 +8,7 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 
 /**
  * This class is used to provide appropriate key code from native key code.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @since 1.0.0
  */
 public class CorrectKey {

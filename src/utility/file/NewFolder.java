@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 
 /**
  * This class is used to create some folders.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class NewFolder {

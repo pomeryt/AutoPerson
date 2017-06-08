@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  * It shows the stack trace of exception and then terminate the program.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class ErrorMessage {

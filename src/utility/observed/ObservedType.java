@@ -9,7 +9,7 @@ import utility.event.IntegerEvent;
 /**
  * All Observed Types should inherit this class and use event lists from here. <br />
  * This class would call a constructor in behalf of its child classes during deserialization.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public abstract class ObservedType {

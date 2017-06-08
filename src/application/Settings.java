@@ -12,7 +12,7 @@ import utility.observed.ObservedInteger;
 
 /**
  * This class manages setting configurations.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class Settings {

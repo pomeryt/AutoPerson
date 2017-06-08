@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 
 /**
  * This class is used to instantiate object from a binary file.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class LoadedObject {

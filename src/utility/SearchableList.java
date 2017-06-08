@@ -19,7 +19,7 @@ import utility.event.StringEvent;
  * Duplicated item addition will be ignored. <br />
  * Items will be automatically sorted alphabetically. <br />
  * This class requires <b>StringEvent.java</b> and <b>center.css</b> files from utility package.
- * @author Rin
+ * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
 public class SearchableList {
