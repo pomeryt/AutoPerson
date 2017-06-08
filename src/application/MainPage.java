@@ -185,6 +185,15 @@ public class MainPage {
 	}
 	
 	/**
+	 * Return root container.
+	 * @return root container
+	 * @since 1.0.0
+	 */
+	public StackPane root(){
+		return pane;
+	}
+	
+	/**
 	 * This method must be called in order to use this object. <br />
 	 * Simply, set scene of a stage to this body.
 	 * @return Scene
