@@ -176,6 +176,18 @@ public class MainPage {
 	}
 	
 	/**
+	 * Call refresh events defined by <b>addRefreshEvent</b> method. <br />
+	 * It will break the JavaFX thread if its stage is not showed yet. <br />
+	 * In order to prevent breaking the JavaFX thread, use <b>Platform.runLater</b> method.
+	 * @since 1.0.0
+	 */
+	public void callRefreshEvents(){
+		for (PlainEvent event : refreshEvent){
+			event.handle();
+		}
+	}
+	
+	/**
 	 * Return SearchableList.
 	 * @return SearchableList
 	 * @since 1.0.0
