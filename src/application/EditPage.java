@@ -172,6 +172,15 @@ public class EditPage {
 	}
 	
 	/**
+	 * Return script name which is acquired from the Label.
+	 * @return script name
+	 * @since 1.0.0
+	 */
+	public String scriptName(){
+		return lScriptName.getText();
+	}
+	
+	/**
 	 * Return TextArea for script.
 	 * @return text area for script
 	 * @since 1.0.0
