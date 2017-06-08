@@ -116,6 +116,15 @@ public class SearchableList {
 	}
 	
 	/**
+	 * Select an item.
+	 * @param item
+	 * @since 1.0.0
+	 */
+	public void select(String item){
+		listView.getSelectionModel().select(item);
+	}
+	
+	/**
 	 * This method will updates the list according to the searching feature.
 	 * @since 1.0.0
 	 */
