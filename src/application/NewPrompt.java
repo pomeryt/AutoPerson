@@ -88,6 +88,14 @@ public class NewPrompt {
 	}
 	
 	/**
+	 * Remove the prompt.
+	 * @since 1.0.0
+	 */
+	public void removePrompt(){
+		pane.getChildren().remove(paneNew);
+	}
+	
+	/**
 	 * Show the prompt to user.
 	 * @since 1.0.0
 	 */
