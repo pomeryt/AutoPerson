@@ -188,6 +188,16 @@ public class MainPage {
 	}
 	
 	/**
+	 * Call edit events defined by <b>addEditEvent</b> method.
+	 * @since 1.0.0
+	 */
+	public void callEditEvents(){
+		for (PlainEvent event : editEvent){
+			event.handle();
+		}
+	}
+	
+	/**
 	 * Return SearchableList.
 	 * @return SearchableList
 	 * @since 1.0.0
