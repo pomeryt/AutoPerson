@@ -71,7 +71,7 @@ public class NewPrompt {
 	/**
 	 * When create button is clicked, the specified action will be executed. <br />
 	 * The parameter of event would be what user entered in the text field.
-	 * @param event
+	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
 	public void addCreateEvent(StringEvent event){
