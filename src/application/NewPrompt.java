@@ -11,11 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import utility.event.PlainEvent;
 import utility.event.StringEvent;
 
 /**
  * Prompt for creating new script. <br />
- * <b>StringEvent</b> in utility package is required.
+ * <b>StringEvent</b> and <b>PlainEvent</b> in utility package are required.
  * @author Rin (pomeryt@gmail.com)
  * @version 1.0.0
  */
@@ -41,15 +42,16 @@ public class NewPrompt {
 
 		// Create Button
 		bCreate.setOnAction(actionEvent->{
-			for (StringEvent event: createEvents){
+			for (StringEvent event : createEvents){
 				event.handle(tfNew.getText());
 			}
 		});
 
 		// Cancel Button
-		final Button bCancel = new Button("Cancel");
 		bCancel.setOnAction(actionEvent->{
-			pane.getChildren().remove(paneNew);
+			for (PlainEvent event : cancelEvents){
+				event.handle();
+			}
 		});
 
 		// GridPane for top
@@ -79,6 +81,15 @@ public class NewPrompt {
 	}
 	
 	/**
+	 * When cancel button is clicked, the specified action will be executed.
+	 * @param event An implementation of action
+	 * @since 1.0.0
+	 */
+	public void addCancelEvents(PlainEvent event){
+		cancelEvents.add(event);
+	}
+	
+	/**
 	 * Show error message.
 	 * @param message error message
 	 * @since 1.0.0
@@ -105,7 +116,9 @@ public class NewPrompt {
 	
 	private final Label lError = new Label();
 	private final List<StringEvent> createEvents = new ArrayList<StringEvent>();
+	private final List<PlainEvent> cancelEvents = new ArrayList<PlainEvent>();
 	private final Button bCreate = new Button("Create");
+	private final Button bCancel = new Button("Cancel");
 	private final StackPane paneNew = new StackPane();
 	private final Pane pane;
 }
