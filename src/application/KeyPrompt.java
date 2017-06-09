@@ -112,6 +112,16 @@ public class KeyPrompt implements NativeKeyListener {
 	}
 	
 	/**
+	 * When keyboard key is pressed, the specified action will be executed. <br />
+	 * The parameter of event would be a corrected key code.
+	 * @param event An implementation of action
+	 * @since 1.0.0
+	 */
+	public void addKeyEvents(IntegerEvent event){
+		keyEvents.add(event);
+	}
+	
+	/**
 	 * Show pressed keyboard key and assign its AWT key code.
 	 * @param key native key event
 	 * @since 1.0.0
@@ -126,6 +136,11 @@ public class KeyPrompt implements NativeKeyListener {
 		Platform.runLater(()->{
 			lText.setText(KeyEvent.getKeyText(this.key));
 		});
+		
+		// Execute key events
+		for (IntegerEvent event : keyEvents){
+			event.handle(this.key);
+		}
 	}
 
 	@Override
@@ -143,6 +158,7 @@ public class KeyPrompt implements NativeKeyListener {
 	private Integer key;
 	
 	private final Label lText = new Label();
+	private final List<IntegerEvent> keyEvents = new ArrayList<IntegerEvent>();
 	private final List<IntegerEvent> saveEvents = new ArrayList<IntegerEvent>();
 	private final Button bSave = new Button("Save");
 	private final StackPane paneRecord = new StackPane();
