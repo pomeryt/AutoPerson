@@ -169,9 +169,18 @@ public class MainPage {
 	/**
 	 * Display start key of the script.
 	 * @param key start key of the script
+	 * @param isDuplicated whether key is duplicated or not
 	 * @since 1.0.0
 	 */
-	public void showKey(String key){
+	public void showKey(String key, boolean isDuplicated){
+		// Change color
+		if (isDuplicated){
+			lKey.setStyle("-fx-border-color: silver; -fx-text-fill: red;");
+		} else {
+			lKey.setStyle("-fx-border-color: silver;");
+		}
+		
+		// Show key
 		lKey.setText(key);
 	}
 	
