@@ -223,8 +223,8 @@ public class Macro implements NativeKeyListener {
 	}
 	
 	/**
-	 * Return HashMap consists of duplicated start keys and those paths.
-	 * @return map of duplicated start keys
+	 * Return HashMap consists of duplicated paths of start key.
+	 * @return map of duplicated paths of start key
 	 * @since 1.0.0
 	 */
 	public Map<Path, Path> duplicate(){
