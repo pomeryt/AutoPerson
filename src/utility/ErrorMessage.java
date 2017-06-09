@@ -66,7 +66,7 @@ public class ErrorMessage {
 		final Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error Message");
 		alert.setHeaderText("You have found a bug.");
-		alert.setContentText("Please report this bug with the details below.");
+		alert.setContentText("Please see the details below.");
 		alert.getDialogPane().setExpandableContent(gridException);
 		alert.setOnCloseRequest(dialogEvent->{
 			System.exit(0);
