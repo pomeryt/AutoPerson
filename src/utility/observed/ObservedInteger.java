@@ -53,7 +53,7 @@ public class ObservedInteger extends ObservedType implements Serializable {
 	 * @param event
 	 * @since 1.0.0
 	 */
-	public void onValueChanged(IntegerEvent event){
+	public void addChangeEvent(IntegerEvent event){
 		super.integerEvents.add(event);
 	}
 	

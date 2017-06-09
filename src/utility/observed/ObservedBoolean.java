@@ -51,7 +51,7 @@ public class ObservedBoolean extends ObservedType implements Serializable {
 	 * @param event
 	 * @since 1.0.0
 	 */
-	public void onValueChanged(BooleanEvent event){
+	public void addChangeEvent(BooleanEvent event){
 		super.booleanEvents.add(event);
 	}
 	
