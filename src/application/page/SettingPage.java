@@ -1,4 +1,4 @@
-package application;
+package application.page;
 
 import java.util.ArrayList;
 import java.util.HashMap;
