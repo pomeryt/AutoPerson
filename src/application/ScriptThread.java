@@ -44,6 +44,9 @@ public class ScriptThread extends Thread {
 		// Finite Loop
 		try {
 			for (int x = 0; x < Integer.parseInt(loop); x++){
+				if (stop){
+					break;
+				}
 				process();
 			}
 		} catch (NumberFormatException numberFormatException){

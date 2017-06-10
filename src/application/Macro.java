@@ -62,12 +62,12 @@ public class Macro implements NativeKeyListener {
 		if (started && keyCode == runningKey){
 			// Mark as stopped
 			started = false;
-			
+			/*
 			// Call close events
 			for (PlainEvent event : closeEvents){
 				event.handle();
 			}
-			
+			*/
 			// Stop script thread
 			scriptThread.end();
 			
@@ -81,6 +81,16 @@ public class Macro implements NativeKeyListener {
 			
 			// Stop script thread
 			scriptThread.end();
+		}
+		
+		// Making sure the previous script thread is done before start new one
+		while (scriptThread != null && scriptThread.isAlive()){
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException interruptedException) {
+				ErrorMessage errorMessage = new ErrorMessage(interruptedException, stage);
+				errorMessage.showThenClose();
+			}
 		}
 		
 		// Start new script
