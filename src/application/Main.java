@@ -293,7 +293,7 @@ public class Main extends Application {
 						writer.write("\n");
 						writer.write("1\n");
 						writer.write("100\n");
-						writer.write("1000");
+						writer.write("100");
 						writer.close();
 					} catch (FileAlreadyExistsException fileAlreadyExistsException) {
 						// When the file already exists
