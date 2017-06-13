@@ -22,6 +22,7 @@ import application.page.MainPage;
 import application.page.SettingPage;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import utility.ErrorMessage;
 import utility.file.NewFolder;
@@ -503,6 +504,7 @@ public class Main extends Application {
 			stage.setWidth(325);
 			stage.setHeight(350);
 			stage.show();
+			stage.getIcons().add(new Image("image/AutoPersonLogoWhite.png"));
 			stage.setOnCloseRequest(windowEvent -> {
 				// Save settings
 				settings.save(stage);
