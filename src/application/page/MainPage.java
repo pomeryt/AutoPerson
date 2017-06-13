@@ -44,19 +44,20 @@ public class MainPage {
 		bRemove.setStyle("-fx-text-fill: red;");
 
 		// Button array
-		final Button[] buttons = { bNew, bEdit, bKey, bSetting, bRefresh, bRemove };
+		final Button[] buttons = { bNew, bEdit, bKey, bSetting, bRefresh, bAbout, bRemove };
 		for (Button button : buttons) {
 			button.setMinWidth(75);
 		}
 		
 		// Apply corresponding events to buttons
 		final Map<Button, List<PlainEvent>> events = new HashMap<Button, List<PlainEvent>>();
-		events.put(bNew, newEvent);
-		events.put(bEdit, editEvent);
-		events.put(bKey, keyEvent);
-		events.put(bSetting, settingEvent);
-		events.put(bRefresh, refreshEvent);
-		events.put(bRemove, removeEvent);
+		events.put(bNew, newEvents);
+		events.put(bEdit, editEvents);
+		events.put(bKey, keyEvents);
+		events.put(bSetting, settingEvents);
+		events.put(bRefresh, refreshEvents);
+		events.put(bAbout, aboutEvents);
+		events.put(bRemove, removeEvents);
 		for (Button button : events.keySet()){
 			button.setOnAction(actionEvent->{
 				for (PlainEvent event : events.get(button)){
@@ -73,7 +74,7 @@ public class MainPage {
 
 		// GridPane for the buttons
 		final GridPane gridButton = new GridPane();
-		gridButton.addColumn(0, bNew, bEdit, bKey, bSetting, bRefresh, paneRemoveButton);
+		gridButton.addColumn(0, bNew, bEdit, bKey, bSetting, bRefresh, bAbout, paneRemoveButton);
 
 		// GridPane for joining buttons and SearchableList.
 		final GridPane gridButtonAndList = new GridPane();
@@ -96,8 +97,8 @@ public class MainPage {
 	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
-	public void addNewEvent(PlainEvent event){
-		newEvent.add(event);
+	public void addNewEvents(PlainEvent event){
+		newEvents.add(event);
 	}
 	
 	/**
@@ -105,8 +106,8 @@ public class MainPage {
 	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
-	public void addEditEvent(PlainEvent event){
-		editEvent.add(event);
+	public void addEditEvents(PlainEvent event){
+		editEvents.add(event);
 	}
 	
 	/**
@@ -114,8 +115,8 @@ public class MainPage {
 	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
-	public void addKeyEvent(PlainEvent event){
-		keyEvent.add(event);
+	public void addKeyEvents(PlainEvent event){
+		keyEvents.add(event);
 	}
 	
 	/**
@@ -123,8 +124,8 @@ public class MainPage {
 	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
-	public void addSettingEvent(PlainEvent event){
-		settingEvent.add(event);
+	public void addSettingEvents(PlainEvent event){
+		settingEvents.add(event);
 	}
 	
 	/**
@@ -132,8 +133,8 @@ public class MainPage {
 	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
-	public void addRefreshEvent(PlainEvent event){
-		refreshEvent.add(event);
+	public void addRefreshEvents(PlainEvent event){
+		refreshEvents.add(event);
 	}
 	
 	/**
@@ -141,8 +142,17 @@ public class MainPage {
 	 * @param event An implementation of action
 	 * @since 1.0.0
 	 */
-	public void addRemoveEvent(PlainEvent event){
-		removeEvent.add(event);
+	public void addRemoveEvents(PlainEvent event){
+		removeEvents.add(event);
+	}
+	
+	/**
+	 * When about button is clicked, the specified action will be executed.
+	 * @param event An implementation of action
+	 * @since 1.0.0
+	 */
+	public void addAboutEvents(PlainEvent event){
+		aboutEvents.add(event);
 	}
 	
 	/**
@@ -185,23 +195,23 @@ public class MainPage {
 	}
 	
 	/**
-	 * Call refresh events defined by <b>addRefreshEvent</b> method. <br />
+	 * Call refresh events defined by <b>addrefreshEvents</b> method. <br />
 	 * It will break the JavaFX thread if its stage is not showed yet. <br />
 	 * In order to prevent breaking the JavaFX thread, use <b>Platform.runLater</b> method.
 	 * @since 1.0.0
 	 */
 	public void callRefreshEvents(){
-		for (PlainEvent event : refreshEvent){
+		for (PlainEvent event : refreshEvents){
 			event.handle();
 		}
 	}
 	
 	/**
-	 * Call edit events defined by <b>addEditEvent</b> method.
+	 * Call edit events defined by <b>addeditEvents</b> method.
 	 * @since 1.0.0
 	 */
 	public void callEditEvents(){
-		for (PlainEvent event : editEvent){
+		for (PlainEvent event : editEvents){
 			event.handle();
 		}
 	}
@@ -237,17 +247,19 @@ public class MainPage {
 	private final SearchableList searchableList;
 	private final Label lRunning = new Label("Ready");
 	private final Label lKey = new Label();
-	private final List<PlainEvent> newEvent = new ArrayList<PlainEvent>();
-	private final List<PlainEvent> editEvent = new ArrayList<PlainEvent>();
-	private final List<PlainEvent> keyEvent = new ArrayList<PlainEvent>();
-	private final List<PlainEvent> settingEvent = new ArrayList<PlainEvent>();
-	private final List<PlainEvent> refreshEvent = new ArrayList<PlainEvent>();
-	private final List<PlainEvent> removeEvent = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> newEvents = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> editEvents = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> keyEvents = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> settingEvents = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> refreshEvents = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> aboutEvents = new ArrayList<PlainEvent>();
+	private final List<PlainEvent> removeEvents = new ArrayList<PlainEvent>();
 	private final Button bNew = new Button("New");
 	private final Button bEdit = new Button("Edit");
 	private final Button bKey = new Button("Key");
 	private final Button bSetting = new Button("Setting");
 	private final Button bRefresh = new Button("Refresh");
+	private final Button bAbout = new Button("About");
 	private final Button bRemove = new Button("Remove");
 	private final StackPane pane = new StackPane();
 	private final Scene scene;

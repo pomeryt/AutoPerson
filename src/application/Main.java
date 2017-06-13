@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 import org.jnativehook.GlobalScreen;
 
+import application.page.AboutPage;
 import application.page.EditPage;
 import application.page.MainPage;
 import application.page.SettingPage;
@@ -68,10 +69,23 @@ public class Main extends Application {
 
 			// SettingPage
 			final SettingPage settingPage = new SettingPage();
-
+			
+			// AboutPage
+			final AboutPage aboutPage = new AboutPage(stage);
+			
 			// Macro
 			final Macro macro = new Macro(scriptFolder, stage);
-
+			
+			// Switch scene from AboutPage to MainPage
+			aboutPage.addMainEvent(()->{
+				stage.setScene(mainPage.body());
+			});
+			
+			// Switch scene from MainPage to AboutPage
+			mainPage.addAboutEvents(()->{
+				stage.setScene(aboutPage.body());
+			});
+			
 			// Switch scene from SettingPage to MainPage
 			settingPage.addMainEvnet(() -> {
 				stage.setScene(mainPage.body());
@@ -152,12 +166,12 @@ public class Main extends Application {
 			});
 
 			// Switch scene from MainPage to SettingPage
-			mainPage.addSettingEvent(() -> {
+			mainPage.addSettingEvents(() -> {
 				stage.setScene(settingPage.body());
 			});
 
 			// From MainPage to EditPage
-			mainPage.addEditEvent(() -> {
+			mainPage.addEditEvents(() -> {
 				final String fileName = mainPage.searchableList().selectedItem();
 
 				// Making sure a script is selected
@@ -209,7 +223,7 @@ public class Main extends Application {
 			});
 
 			// Refresh button in MainPage
-			mainPage.addRefreshEvent(() -> {
+			mainPage.addRefreshEvents(() -> {
 				// Clear SearchableList
 				mainPage.searchableList().clear();
 
@@ -235,7 +249,7 @@ public class Main extends Application {
 			});
 
 			// Remove button in MainPage
-			mainPage.addRemoveEvent(() -> {
+			mainPage.addRemoveEvents(() -> {
 				// Selected Item
 				final String selectedItem = mainPage.searchableList().selectedItem();
 
@@ -258,7 +272,7 @@ public class Main extends Application {
 			});
 
 			// New button in MainPage
-			mainPage.addNewEvent(() -> {
+			mainPage.addNewEvents(() -> {
 				final NewPrompt newPrompt = new NewPrompt(mainPage.root());
 
 				// Create button
@@ -344,7 +358,7 @@ public class Main extends Application {
 			});
 
 			// Key button in MainPage
-			mainPage.addKeyEvent(() -> {
+			mainPage.addKeyEvents(() -> {
 				// Making sure an item is selected
 				if (mainPage.searchableList().selectedItem() != null) {
 					// Remove macro for a bit
@@ -437,7 +451,7 @@ public class Main extends Application {
 			});
 
 			// Turn on Script when scene is changed from MainPage to EditPage
-			mainPage.addEditEvent(() -> {
+			mainPage.addEditEvents(() -> {
 				this.script = new Script(settings.recordKey().value());
 
 				// When it starts to record
