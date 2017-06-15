@@ -38,6 +38,9 @@ public class ScriptThread extends Thread {
 			while (stop == false){
 				process();
 			}
+			
+			// Close
+			closeEvent.handle();
 			return;
 		}
 		
