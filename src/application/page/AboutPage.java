@@ -35,24 +35,32 @@ public class AboutPage {
 		
 		// Label for developer
 		final Label lDeveloper = new Label("Developer: Rin");
+		lDeveloper.setPrefWidth(Integer.MAX_VALUE);
+		lDeveloper.setAlignment(Pos.CENTER);
 		
 		// Label for version
 		final Label lVersion = new Label("Version: 1.0.0");
+		lVersion.setPrefWidth(Integer.MAX_VALUE);
+		lVersion.setAlignment(Pos.CENTER);
 		
 		// Link to source code
-		final Hyperlink linkSource = new Hyperlink("Source Code");
-		linkSource.setOnAction(actionEvent->{
+		final Hyperlink linkWeb = new Hyperlink("More Information");
+		linkWeb.setOnAction(actionEvent->{
 			try {
-				Desktop.getDesktop().browse(new URI("https://github.com/pomeryt/AutoPerson"));
+				Desktop.getDesktop().browse(new URI("https://pomeryt.github.io/AutoPerson/"));
 			} catch (Exception exception) {
 				ErrorMessage errorMessage = new ErrorMessage(exception, stage);
 				errorMessage.showThenClose();
 			}
 		});
 		
+		// StackPane for link
+		final StackPane paneLink = new StackPane();
+		paneLink.getChildren().add(linkWeb);
+		
 		// GridPane
 		final GridPane grid = new GridPane();
-		grid.addColumn(0, lDeveloper, lVersion, linkSource);
+		grid.addColumn(0, lDeveloper, lVersion, paneLink);
 		grid.setAlignment(Pos.CENTER);
 		grid.setVgap(10);
 		
