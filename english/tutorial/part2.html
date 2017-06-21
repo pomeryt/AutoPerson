@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 2: Recording</h3>
+	<p>
+		This tutorial explains how to record keyboard and mouse action. <br />
+		Before recording, you need to create a file by clicking the <b>New</b> button. <br />
+		<img src="img/part2/clickNew.png" class="img-responsive" />
+		Define a name for the file and click <b>Create</b> button.
+		<img src="img/part2/create.png" class="img-responsive" />
+		If the file is successfully created, then you will go to the edit page. <br />
+		While you are on the edit page, press record button you defined in the previous tutorial.
+		<img src="img/part2/recording.png" class="img-responsive" />
+		Record your action if it says "recording" with green color. <br />
+		When you are finished recording, <b>press the record key again to stop recording.</b> <br />
+		The text should display "Ready" at this time. <br />
+		Click <b>To Main</b> button to go back to the main page.
+		<img src="img/part2/stop.png" class="img-responsive" />
+	</p>
+	<h3><a href="part3.html">Part 3: Executing a file</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>
