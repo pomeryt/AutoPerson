@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 3: Executing a file</h3>
+	<p>
+		This tutorial explains how to run a file. <br />
+		Firstly, you need to define a start key on your keyboard. <br />
+		Select a file you want to execute and click the <b>key</b> button.
+		<img src="img/part3/clickKey.png" class="img-responsive" />
+		Press a key you like on your keyboard and click <b>Save</b> button. <br />
+		The key you pressed will be the start key.
+		<img src="img/part3/startKey.png" class="img-responsive" />
+		You can see the start key you defined. <br />
+		<img src="img/part3/checkStartKey.png" class="img-responsive" />
+		If you press the start key you just defined on your keyboard, then the recorded action will be executed. <br />
+		You will see the green text indicating which file is running. <br />
+		<img src="img/part3/running.png" class="img-responsive" />
+		When the execution is finished, you will see the text "Ready" again. <br />
+		If you press start key while it is running, it will stop executing the file.
+	</p>
+	<h3><a href="part4.html">Part 4: Main Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>
