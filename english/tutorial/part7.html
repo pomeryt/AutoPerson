@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 7: Understanding the script</h3>
+	<p>
+		This tutorial provides more information about the script. <br/>
+		<h3>Codes</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Meaning</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>pos(x,y)</td>
+					<td>
+						Move mouse cursor to the specified (x,y) position of your screen.
+					</td>
+				</tr>
+				<tr>
+					<td>mp1</td>
+					<td>
+						Left Mouse Press
+					</td>
+				</tr>
+				<tr>
+					<td>mr1</td>
+					<td>
+						Left Mouse Release
+					</td>
+				</tr>
+				<tr>
+					<td>mp2</td>
+					<td>
+						Right Mouse Press
+					</td>
+				</tr>
+				<tr>
+					<td>mr2</td>
+					<td>
+						Right Mouse Release
+					</td>
+				</tr>
+				<tr>
+					<td>mp3</td>
+					<td>
+						Mouse Wheel Press
+					</td>
+				</tr>
+				<tr>
+					<td>mr3</td>
+					<td>
+						Mouse Wheel Release
+					</td>
+				</tr>
+				<tr>
+					<td>wheel(integer)</td>
+					<td>
+						wheel(-1) is a same action as page up by 1 unit using mouse wheel. <br />
+						wheel(1) is a same action as page down by 1 unit using mouse wheel.
+					</td>
+				</tr>
+				<tr>
+					<td>kp(key code)</td>
+					<td>
+						Press specified key code on your keyboard.<br />
+						You can see the list of key codes on java.awt.event.KeyEvent section from <a href="https://docs.oracle.com/javase/7/docs/api/constant-values.html" target="_blank">here</a>.
+					</td>
+				</tr>
+				<tr>
+					<td>kr(key code)</td>
+					<td>
+						Release specified key code on your keyboard.<br />
+						You can see the list of key codes on java.awt.event.KeyEvent section from <a href="https://docs.oracle.com/javase/7/docs/api/constant-values.html" target="_blank">here</a>.
+					</td>
+				</tr>
+				<tr>
+					<td>sleep(integer)</td>
+					<td>
+						It will be idle for specified amount of time. <br />
+						The unit of time is <b>millisecond</b>. <br />
+						For example, sleep(1000) means idle for 1 second.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		Once you understand how script works, you can edit your script manually(without recording). <br />
+		For example, 
+<pre>
+mp1
+sleep(auto1)
+mr1
+sleep(auto2)
+</pre>
+		This script will simulate auto-clicking. <br />
+		(Make sure you put '<b>i</b>' on Loop section)
+	</p>
+	<h3><a href="part8.html">Part 8: About Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

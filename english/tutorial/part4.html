@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 4: Main Page</h3>
+	<p>
+		In this tutorial, the main page will be explained. <br/>
+		The image below shows the main page.
+		<img src="img/part4/main.png" class="img-responsive" />
+		<h3>Meanings of each number</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Meaning</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						It shows running status. <br />
+						"Ready" means no script is running. <br />
+						If the color is green, then it means a file is running.
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						It shows the start key of script. <br />
+						The script will run when you press the start key on your keyboard. <br />
+						If you press the same start key again while a script is running, then it will stop the script. <br />
+						If you press the different start key while a script is running, then it will stop the current script and run new script.
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						It is a search bar of the script list.
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						It is a script list. <br />
+						It displays all files in the <b>script</b> folder. <br />
+						It sorts scripts in alphabetical order.
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>
+						Button for creating a new script.
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>
+						Button for editing a script. <br />
+						Select a script you want to edit from the list before pressing the button.
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>
+						Button for setting a start key of the script.
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>
+						You will go to the Setting page when you press this button.
+					</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>
+						Refresh button for the script list.
+					</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>
+						You will go to the About page when you press this button.
+					</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>
+						Button for removing a script.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part5.html">Part 5: Setting Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 6: Edit Page</h3>
+	<p>
+		In this tutorial, the edit page will be explained. <br/>
+		The image below shows the edit page.
+		<img src="img/part6/edit.png" class="img-responsive" />
+		<h3>Meanings of each number</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Meaning</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						It shows recording status.
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						It shows which script you are editing.
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						It shows the script. <br />
+						More information will be given in the next tutorial.
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						It determines how many times you will run the script. <br />
+						If you put '<b>i</b>', then it will run infinitely.
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>
+						This is the value of <b>auto1</b>. <br />
+						See next tutorial for more information.
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>
+						This is the value of <b>auto2</b>. <br />
+						See next tutorial for more information.
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>
+						You will go to the main page when you press this button.
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>
+						It will clears the script when you press this button.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part7.html">Part 7: Understanding the script</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>
