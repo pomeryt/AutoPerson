@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 2: 녹화하기</h3>
+	<p>
+		이번엔 키보드와 마우스 행동을 녹화해 보겠습니다. <br />
+		녹화를 하기 전에 <b>New</b> 버튼을 눌러 새 파일을 만들어야 합니다. <br />
+		<img src="img/part2/clickNew.png" class="img-responsive" />
+		파일 이름을 정한 후 <b>Create</b> 버튼을 눌러 주세요.
+		<img src="img/part2/create.png" class="img-responsive" />
+		파일이 성공적으로 만들어졌다면 edit page로 이동하게 될 겁니다. <br />
+		Edit page에 계신 상태에서 저번 시간에 설정했던 녹화 버튼을 눌러주세요.
+		<img src="img/part2/recording.png" class="img-responsive" />
+		초록색 글씨로 "recording"이라고 나온다면 녹화 중이라는 뜻입니다. <br />
+		<b>녹화 버튼을 다시 한번 누르면 녹화가 종료됩니다.</b> <br />
+		녹화가 종료되면 "Ready"라는 문구로 돌아옵니다. <br />
+		녹화를 끝내셨으면 <b>To Main</b> 버튼을 눌러 main page로 이동합시다.
+		<img src="img/part2/stop.png" class="img-responsive" />
+	</p>
+	<h3><a href="part3.html">Part 3: 파일 실행하기</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

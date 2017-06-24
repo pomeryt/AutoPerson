@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 5: Setting Page</h3>
+	<p>
+		이번에는 Setting Page에 대해 알아보도록 하겠습니다. <br/>
+		아래 사진이 Setting Page입니다.
+		<img src="img/part5/setting.png" class="img-responsive" />
+		<h3>번호에 대한 설명</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>설명</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						Main Page로 이동합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						체크박스를 선택하면 프로그램이 항상 위로 올라오게 됩니다.
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						녹화 버튼을 나타냅니다. <br />
+						클릭하여 녹화 버튼을 변경할 수 있습니다.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part6.html">Part 6: Edit Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

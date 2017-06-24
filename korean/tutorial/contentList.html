@@ -1,0 +1,81 @@
+<div class="container">          
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<button id= "head" type="button" class="btn btn-default" onclick="displayContent()">Hide content list</button>
+			</tr>
+		</thead>
+	
+		<tbody>
+			<tr>
+				<td class="content"><a href="part1.html">Part 1: 녹화 버튼 설정하기</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part2.html">Part 2: 녹화하기</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part3.html">Part 3: 파일 실행하기</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part4.html">Part 4: Main Page</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part5.html">Part 5: Setting Page</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part6.html">Part 6: Edit Page</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part7.html">Part 7: 스크립트 이해하기</a></td>
+			</tr>
+			<tr>
+				<td class="content"><a href="part8.html">Part 8: About Page</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+	function displayContent(){
+		var head = document.getElementById("head");
+		var content = document.getElementsByClassName("content");
+		if (content[0].style.display == "none"){
+			showContent();
+        } else {
+            hideContent();
+        }
+    }
+</script>
+
+<script type="text/javascript">
+	function showContent(){
+		var head = document.getElementById("head");
+		var content = document.getElementsByClassName("content");
+		
+		for (var x = 0; x < content.length; x++){
+            content[x].style.display="block";
+        }
+		head.innerText = "Hide content list";
+    }
+</script>
+
+<script type="text/javascript">
+	function hideContent(){
+		var head = document.getElementById("head");
+		var content = document.getElementsByClassName("content");
+		
+		for (var x = 0; x < content.length; x++){
+			content[x].style.display="none";
+        }
+		head.innerText = "Show content list";
+    }
+</script>
+
+<script type="text/javascript">
+	var path = document.location.href;
+	if (path.match("korean/tutorial/index.html$")){
+		showContent();
+	} else {
+		hideContent();
+	}
+</script>

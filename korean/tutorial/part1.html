@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 1: 녹화 버튼 설정하기</h3>
+	<p>
+		녹화 버튼을 설정하는 방법에 대해 알아봅시다. <br />
+		먼저 <b>Setting</b> 버튼을 클릭해 주세요.
+		<img src="img/part1/clickSetting.png" class="img-responsive" />
+		그러면 "Record: Back Quote"이라고 쓰여있는 것이 보일 겁니다. <br />
+		이것은 현재 녹화 버튼이 <kbd>Back Quote(`)</kbd>라는 뜻입니다. <br />
+		녹화 버튼을 바꾸기 위해선 버튼을 클릭하고 원하는 키보드 키를 눌러 주세요.
+		<img src="img/part1/clickRecord.png" class="img-responsive" />
+		<img src="img/part1/setRecordKey.png" class="img-responsive" />
+		그 후 <b>save</b> 버튼을 누르시면 녹화 버튼이 바뀐 걸 보실 수 있을 겁니다. <br />
+		설정이 끝났으면 <b>To Main</b>을 눌러 main page로 이동합시다.
+		<img src="img/part1/recordDone.png" class="img-responsive" />
+	</p>
+	<h3><a href="part2.html">Part 2: 녹화하기</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

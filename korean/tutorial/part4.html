@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 4: Main Page</h3>
+	<p>
+		이번에는 Main Page에 대해 알아보도록 하겠습니다. <br/>
+		아래 있는 사진이 Main Page입니다.
+		<img src="img/part4/main.png" class="img-responsive" />
+		<h3>번호에 대한 설명</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>설명</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						실행 상태가 나타납니다. <br />
+						"Ready"는 실행 중인 스크립트가 없다는 뜻입니다. <br />
+						초록색 글씨로 파일 이름이 나오면 그 스크립트가 실행 중이라는 뜻입니다.
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						선택한 스크립트의 시작 버튼이 나타납니다. <br />
+						시작 버튼을 누르면 그 스크립트가 실행됩니다. <br />
+						스크립트가 실행 중일 때 같은 시작 버튼을 누르면 그 스크립트가 종료됩니다. <br />
+						스크립트가 실행 중일 때 다른 시작 버튼을 누르면 실행 중인 스크립트가 종료되고 새로운 스크립트가 시작됩니다.
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						스크립트 리스트의 검색창입니다.
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						스크립트 리스트입니다. <br />
+						<b>script</b> 폴더 속에 있는 모든 파일을 나열합니다. <br />
+						리스트는 알파벳순으로 정렬됩니다.
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>
+						새로운 스크립트를 만듭니다.
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>
+						선택한 스크립트를 수정하는 버튼입니다. <br />
+						버튼을 누르면 Edit Page로 이동합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>
+						선택한 스크립트의 시작 버튼을 정합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>
+						Setting Page로 이동합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>
+						스크립트 리스트의 새로고침 버튼입니다.
+					</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>
+						About Page로 이동합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>
+						선택한 스크립트를 삭제합니다.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part5.html">Part 5: Setting Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

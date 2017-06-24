@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 6: Edit Page</h3>
+	<p>
+		이번에는 Edit Page에 대해 알아보도록 하겠습니다. <br/>
+		아래 사진이 Edit Page입니다.
+		<img src="img/part6/edit.png" class="img-responsive" />
+		<h3>번호에 대한 설명</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>설명</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						녹화 상태를 나타냅니다. <br />
+						"Ready"는 녹화 중이 아닐 때를 뜻합니다.
+						초록색으로 "Recording"이라고 표시되면 녹화 중이라는 뜻입니다.
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						현재 수정 중인 스크립트 이름을 나타냅니다.
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						스크립트 내용이 담깁니다. <br />
+						더 자세한 설명은 다음 파트에 나옵니다.
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						스크립트의 실행 횟수를 나타냅니다. <br />
+						'<b>i</b>'를 입력하면 스크립트가 무한으로 실행됩니다.
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>
+						<b>auto1</b>의 값을 나타냅니다. <br />
+						더 자세한 설명은 다음 파트에 나옵니다.
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>
+						<b>auto2</b>의 값을 나타냅니다. <br />
+						더 자세한 설명은 다음 파트에 나옵니다.
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>
+						Main Page로 이동합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>
+						스크립트를 백지화합니다.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part7.html">Part 7: 스크립트 이해하기</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

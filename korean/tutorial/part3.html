@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 3: 파일 실행하기</h3>
+	<p>
+		이번엔 파일을 실행해 보도록 하겠습니다. <br />
+		먼저 시작 버튼을 설정해 줘야 합니다. <br />
+		실행하시려는 파일을 선택한 후 <b>key</b> 버튼을 클릭해 주세요.
+		<img src="img/part3/clickKey.png" class="img-responsive" />
+		원하시는 키보드 키를 누르고 <b>Save</b> 버튼을 클릭해 주세요. <br />
+		방금 누르신 키보드 키가 시작 버튼이 됩니다.
+		<img src="img/part3/startKey.png" class="img-responsive" />
+		아래 사진처럼 설정하신 시작 버튼을 확인하실 수 있습니다. <br />
+		<img src="img/part3/checkStartKey.png" class="img-responsive" />
+		방금 설정하신 시작 버튼을 누르시면 파일이 실행됩니다. <br />
+		초록색 글씨로 실행 중인 파일이 보이게 됩니다.<br />
+		<img src="img/part3/running.png" class="img-responsive" />
+		실행이 종료되면 다시 "Ready"인 상태로 바뀝니다. <br />
+		실행 중에 시작 버튼을 다시 누르면 실행이 종료됩니다.
+	</p>
+	<h3><a href="part4.html">Part 4: Main Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

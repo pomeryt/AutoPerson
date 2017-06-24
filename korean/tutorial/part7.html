@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 7: 스크립트 이해하기</h3>
+	<p>
+		이번엔 스크립트에 쓰여있는 코드에 대한 설명을 하겠습니다.<br/>
+		<h3>코드</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>코드</th>
+					<th>설명</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>pos(x,y)</td>
+					<td>
+						모니터 좌표 (x,y)로 마우스 커서를 이동합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>mp1</td>
+					<td>
+						왼쪽 마우스 버튼을 누릅니다.
+					</td>
+				</tr>
+				<tr>
+					<td>mr1</td>
+					<td>
+						눌렀던 왼쪽 마우스 버튼을 뗍니다.
+					</td>
+				</tr>
+				<tr>
+					<td>mp2</td>
+					<td>
+						오른쪽 마우스 버튼을 누릅니다.
+					</td>
+				</tr>
+				<tr>
+					<td>mr2</td>
+					<td>
+						눌렀던 오른쪽 마우스 버튼을 뗍니다.
+					</td>
+				</tr>
+				<tr>
+					<td>mp3</td>
+					<td>
+						마우스 휠을 누릅니다.
+					</td>
+				</tr>
+				<tr>
+					<td>mr3</td>
+					<td>
+						눌렀던 마우스 휠을 뗍니다.
+					</td>
+				</tr>
+				<tr>
+					<td>wheel(integer)</td>
+					<td>
+						wheel(-1)은 마우스 휠을 돌려서 페이지를 한 칸 올린 것과 같은 행동을 합니다. <br />
+						wheel(1)은 마우스 휠을 돌려서 페이지를 한 칸 내린 것과 같은 행동을 합니다.
+					</td>
+				</tr>
+				<tr>
+					<td>kp(key code)</td>
+					<td>
+						지정한 key code의 키보드 키를 누릅니다. <br />
+						key code 리스트는 <a href="https://docs.oracle.com/javase/7/docs/api/constant-values.html" target="_blank">여기</a>를 클릭하여 java.awt.event.KeyEvent 항목에서 찾을 수 있습니다.
+					</td>
+				</tr>
+				<tr>
+					<td>kr(key code)</td>
+					<td>
+						눌렀던 키보드 키를 뗍니다. <br />
+						key code 리스트는 <a href="https://docs.oracle.com/javase/7/docs/api/constant-values.html" target="_blank">여기</a>를 클릭하여 java.awt.event.KeyEvent 항목에서 찾을 수 있습니다.
+					</td>
+				</tr>
+				<tr>
+					<td>sleep(integer)</td>
+					<td>
+						지정한 시간 동안 실행을 잠시 멈추게 됩니다. <br />
+						시간의 단위는 <b>millisecond</b>입니다. <br />
+						예를 들어, sleep(1000)은 1초를 쉬게 됩니다.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		위 내용을 토대로 스크립트를 직접 수정할 수 있습니다. <br />
+		예를 들면, 
+<pre>
+mp1
+sleep(auto1)
+mr1
+sleep(auto2)
+</pre>
+		위 코드는 오토 클릭 기능을 하게 됩니다. <br />
+		(Loop 부분에 '<b>i</b>'를 적으셔야 합니다)
+	</p>
+	<h3><a href="part8.html">Part 8: About Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>
