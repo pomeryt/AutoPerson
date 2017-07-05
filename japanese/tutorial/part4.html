@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 4: Main Page</h3>
+	<p>
+		今回はMain Pageについて調べて見ましょう。<br/>
+		下に見える場面がMain Pageです。
+		<img src="img/part4/main.png" class="img-responsive" />
+		<h3>番号の説明</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>番号</th>
+					<th>説明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						実行ステータスが表示されます。<br />
+						"Ready"は実行中のスクリプトがないという意味です。<br />
+						緑字でファイル名が表示されたらそのスクリプトが実行中という意味です。
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						選択したスクリプトのスタートボタンが表示されます。<br />
+						スタートボタンを押すとそのスクリプトが実行されます。<br />
+						スクリプトが実行中の時同じスタートボタンをもう一度押すとそのスクリプトが終了されます。<br />
+						スクリプトが実行中の時他のスタートボタンを押すと実行中のスクリプトが終了されて新しいスクリプトが実行されます。
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						ファイルの検索ができます。
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						ファイルリストです。<br />
+						<b>script</b>フォルダーにある全てのテキストファイルが表示されます。 <br />
+						リストはアルファベット順に整列されます。
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>
+						新しいファイルを作ります。
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>
+						選択したスクリプトを修正するボタンです。 <br />
+						ボタンを押すとEdit Pageへ移動されます。
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>
+						選択したスクリプトのスタートボタンを設定します。
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>
+						Setting Pageへ移動します。
+					</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>
+						スクリプトリストのリフレッシュボタンです。
+					</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>
+						About Pageへ移動します。
+					</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>
+						選択したスクリプトを削除します。
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part5.html">Part 5: Setting Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

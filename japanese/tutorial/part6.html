@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 6: Edit Page</h3>
+	<p>
+		今回はEdit Pageについて調べて見ましょう。<br/>
+		下に見える場面がEdit Pageです。
+		<img src="img/part6/edit.png" class="img-responsive" />
+		<h3>番号の説明</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>番号</th>
+					<th>説明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>
+						録画のステータスを表示します。<br />
+						”Ready”は録画をしていない状況です。
+						緑字で”Recording”て表示されたら録画中という意味です。
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						現在修正中のスクリプト名が表示されます。
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						スクリプトの内容が表示されます。<br />
+						もっと詳しい内容は次のパートを見てください。
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						スクリプトの実行回数を意味します。<br />
+						'<b>i</b>'を入力したらスクリプトが無限に実行されます。
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>
+						<b>auto1</b>の値を意味します。<br />
+						もっと詳しい内容は次のパートを見てください。
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>
+						<b>auto2</b>の値を意味します。<br />
+						もっと詳しい内容は次のパートを見てください。
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>
+						Main Pageへ移動します。
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>
+						スクリプトの内容を全て消します。
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<h3><a href="part7.html">Part 7: スクリプトの理解</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

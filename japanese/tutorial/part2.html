@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 2: 録画をする方法</h3>
+	<p>
+		今回はキーボードとマウスの行動を録画してみましょう。<br />
+		録画をする前に<b>New</b>ボタンを押して新しいファイルを作って下さい。 <br />
+		<img src="img/part2/clickNew.png" class="img-responsive" />
+		ファイル名を決めた後<b>Create</b>ボタンを押して下さい。
+		<img src="img/part2/create.png" class="img-responsive" />
+		ファイルが成功的に作られたらEdit Pageに移動されます。<br />
+		Edit Pageにいた状態で前回設定した録画ボタンを押してください。
+		<img src="img/part2/recording.png" class="img-responsive" />
+		緑字で"recording"と出たら録画中という意味です。<br />
+		<b>録画ボタンをもう一度押すと録画が終了されます。</b> <br />
+		録画が終了されるとステータスが"Ready"に戻ります。<br />
+		録画を終わらせたら<b>To Main</b>ボタンを押してMain Pageに移動しましょう。
+		<img src="img/part2/stop.png" class="img-responsive" />
+	</p>
+	<h3><a href="part3.html">Part 3: ファイルを実行する方法</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

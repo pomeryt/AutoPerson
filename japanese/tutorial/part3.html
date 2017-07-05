@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 3: ファイルを実行する方法</h3>
+	<p>
+		今回はファイルを実行してみましょう。<br />
+		先ずスタートボタンの設定をします。<br />
+		実行しようとするファイルを選択して<b>key</b>ボタンをクリックして下さい。
+		<img src="img/part3/clickKey.png" class="img-responsive" />
+		ご希望のキーボードのキーを押して<b>Save</b>ボタンをクリックしてください。<br />
+		今押したキーボードのキーがスタートボタンになります。
+		<img src="img/part3/startKey.png" class="img-responsive" />
+		下に見えるとおり設定されたスタートボタンを確認する事ができます。<br />
+		<img src="img/part3/checkStartKey.png" class="img-responsive" />
+		今設定したスタートボタンを押すとファイルが実行されます。<br />
+		緑字で実行中のファイルが表示されます。<br />
+		<img src="img/part3/running.png" class="img-responsive" />
+		実行が終了されると”Ready"の状況に戻ります。<br />
+		実行中にスタートボタンをもう一回押すと実行が終了されます。
+	</p>
+	<h3><a href="part4.html">Part 4: Main Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

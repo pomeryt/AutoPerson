@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 7: スクリプトの理解</h3>
+	<p>
+		今回はスクリプトで使われているコードについて調べて見ましょう。<br/>
+		<h3>コード</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>コード</th>
+					<th>説明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>pos(x,y)</td>
+					<td>
+						モニターの座標(x,y)へマウスのカーソルを移動させます。
+					</td>
+				</tr>
+				<tr>
+					<td>mp1</td>
+					<td>
+						マウスの左ボタンを押します。
+					</td>
+				</tr>
+				<tr>
+					<td>mr1</td>
+					<td>
+						押したマウスの左ボタンをリリースします。
+					</td>
+				</tr>
+				<tr>
+					<td>mp2</td>
+					<td>
+						マウスの右ボタンを押します。
+					</td>
+				</tr>
+				<tr>
+					<td>mr2</td>
+					<td>
+						押したマウスの右ボタンをリリースします。
+					</td>
+				</tr>
+				<tr>
+					<td>mp3</td>
+					<td>
+						マウスのホイールを押します。
+					</td>
+				</tr>
+				<tr>
+					<td>mr3</td>
+					<td>
+						押したマウスのホイールをリリースします。
+					</td>
+				</tr>
+				<tr>
+					<td>wheel(integer)</td>
+					<td>
+						wheel(-1)はマウスホイールを回してページを一間上げたのと同じ行動をします。 <br />
+						wheel(1)はマウスホイールを回してページを一間下げたのと同じ行動をします。
+					</td>
+				</tr>
+				<tr>
+					<td>kp(key code)</td>
+					<td>
+						キーボードのkey codeを押します。<br />
+						key codeのリストは<a href="https://docs.oracle.com/javase/7/docs/api/constant-values.html" target="_blank">こちら</a>をクリックしてjava.awt.event.KeyEvent項目を見て下さい。
+					</td>
+				</tr>
+				<tr>
+					<td>kr(key code)</td>
+					<td>
+						押したキーボードのボタンをリリースします。<br />
+						key codeのリストは<a href="https://docs.oracle.com/javase/7/docs/api/constant-values.html" target="_blank">こちら</a>をクリックしてjava.awt.event.KeyEvent項目を見て下さい。
+					</td>
+				</tr>
+				<tr>
+					<td>sleep(integer)</td>
+					<td>
+						指定した時間の間実行をしばらく止めます。<br />
+						時間の単位は<b>millisecond</b>です。<br />
+						例えば、sleep(1000)は1秒を休むことになります。
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		上記の内容をもとに、スクリプトを直接修正することができます。<br />
+		例えば、
+<pre>
+mp1
+sleep(auto1)
+mr1
+sleep(auto2)
+</pre>
+		上のコードはオートクリック機能をします。<br />
+		(Loop欄に'<b>i</b>'を書いて下さい。)
+	</p>
+	<h3><a href="part8.html">Part 8: About Page</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>

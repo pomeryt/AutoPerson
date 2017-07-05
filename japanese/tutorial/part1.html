@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../AutoPersonWhiteIcon.ico" />
+<title>AutoPerson</title>
+</head>
+<body>
+
+<div id="navigator"></div>
+
+<div class="container">
+	<div id="contentList"></div>
+	<h3>Part 1: 録画ボタンの設定</h3>
+	<p>
+		録画ボタンを設定する方法について調べてみましょう。 <br />
+		まず<b>Setting</b>ボタンをクリックして下さい。
+		<img src="img/part1/clickSetting.png" class="img-responsive" />
+		そしたら"Record: Back Quote"と書かれているのが見えます。 <br />
+		これは現在の録画ボタンが<kbd>Back Quote(`)</kbd>という意味です。 <br />
+		録画ボタンを変えるためにはボタンをクリックし、希望するキーボードのキーを押してください。
+		<img src="img/part1/clickRecord.png" class="img-responsive" />
+		<img src="img/part1/setRecordKey.png" class="img-responsive" />
+		その後<b>save</b>ボタンを押せば録画ボタンが変わったのを見ることができます。<br />
+		設定が終わったら<b>To Main</b>を押してMain Pageへ移動しましょう。
+		<img src="img/part1/recordDone.png" class="img-responsive" />
+	</p>
+	<h3><a href="part2.html">Part 2: 録画をする方法</a></h3>
+	<br /><br /><br />
+</div>
+
+<script type="text/javascript" src="../../javascript/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/bootstrap.min.js"></script>
+<script> 
+	$(function(){
+		$("#navigator").load("../navigator.html");
+	});
+	
+	$(function(){
+		$("#contentList").load("contentList.html");
+	});
+</script> 
+</body>
+</html>
